@@ -32,7 +32,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <sparsehash/internal/libc_allocator_with_realloc.h>
 
 using std::string;

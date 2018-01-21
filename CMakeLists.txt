@@ -1,16 +1,26 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 
-set(CMAKE_BUILD_TYPE Release)
 project (sparsehash)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -Wpedantic -Wno-missing-field-initializers")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+option(SPARSEHASH_ENABLE_TESTING "Enable testing of the sparsehash library." ON)
 
-include_directories(.)
+add_library(sparsehash INTERFACE)
 
-enable_testing()
-add_subdirectory(tests)
+target_compile_features(sparsehash INTERFACE cxx_std_11)
+
+target_include_directories(sparsehash
+        INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
+        $<INSTALL_INTERFACE:include/google/sparsehash>)
 
 install(DIRECTORY sparsehash DESTINATION include/google)
+install(TARGETS sparsehash EXPORT sparsehash-config DESTINATION sparsehash/include)
+install(EXPORT sparsehash-config DESTINATION share/sparsehash/cmake)
+
+if(SPARSEHASH_ENABLE_TESTING)
+    include(googletest.cmake)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+
 

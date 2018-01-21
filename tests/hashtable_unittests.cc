@@ -58,7 +58,7 @@
 #include <sparsehash/sparsetable>
 #include "hashtable_test_interface.h"
 #include "fixture_unittests.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 using std::cout;
 using std::set;

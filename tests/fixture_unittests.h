@@ -11,7 +11,7 @@
 #include <sparsehash/sparsetable>
 #include "hashtable_test_interface.h"
 
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 using std::pair;
 using std::string;

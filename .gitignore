@@ -1,3 +1,44 @@
+#Visual Studio Dateien ignorieren
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+*.ipch
+*.opensdf
+*.opendb
+*.sdf
+*.VC.db
+/.vs
+CMakeSettings.json
+
+# CMake
+cmake-build-*/
+
+# Clion
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
 sparsehash/.DS_Store
 .DS_Store
 *.o

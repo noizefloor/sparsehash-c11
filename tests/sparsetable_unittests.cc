@@ -37,9 +37,9 @@
 #include <vector>
 #include <cstdio>
 #include <cstdint>
-#include "gtest/gtest.h"
-#include "gtest/gmock.h"  // for ElementsAre,ElementsAreArray and ContainerEq
-#include "sparsehash/sparsetable"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h> // for ElementsAre,ElementsAreArray and ContainerEq
+#include <sparsehash/sparsetable>
 
 using google::sparsetable;
 using google::DEFAULT_SPARSEGROUP_SIZE;

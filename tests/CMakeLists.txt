@@ -1,6 +1,5 @@
-include_directories(.)
 
-add_subdirectory(gtest)
+find_package(Threads)
 
 add_executable(sparsehash_unittests
     testmain.cc
@@ -11,8 +10,19 @@ add_executable(sparsehash_unittests
     fixture_unittests.cc
     allocator_unittests.cc)
 
-add_executable(bench bench.cc)
+target_include_directories(sparsehash_unittests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_test(sparsehash_unittests sparsehash_unittests)
-target_link_libraries(sparsehash_unittests gtest pthread)
-target_link_libraries(bench pthread)
+
+target_link_libraries(sparsehash_unittests
+    PRIVATE
+        gtest
+        gmock
+        sparsehash
+        ${CMAKE_THREAD_LIBS_INIT})
+
+add_executable(bench bench.cc)
+
+target_link_libraries(bench
+        sparsehash
+        ${CMAKE_THREAD_LIBS_INIT})

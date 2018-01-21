@@ -33,7 +33,7 @@
 // and have them work. It's meant to emulate what a 'regular
 // install' of sparsehash would be able to see.
 
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <sparsehash/sparse_hash_set>
 #include <sparsehash/sparse_hash_map>
 #include <sparsehash/dense_hash_set>
