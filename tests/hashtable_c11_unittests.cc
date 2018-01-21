@@ -81,7 +81,8 @@ TEST(DenseHashMapMoveTest, EmplaceHint)
     ASSERT_EQ(6, (int)h.size());
 }
 
-TEST(DenseHashMapMoveTest, EmplaceHint_SpeedComparison)
+// Using random numbers makes this test brittle
+TEST(DenseHashMapMoveTest, DISABLED_EmplaceHint_SpeedComparison)
 {
     static const int Elements = 1e6;
     static const int Duplicates = 5;

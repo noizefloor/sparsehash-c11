@@ -89,6 +89,7 @@
 
 #include <algorithm>   // needed by stl_alloc
 #include <functional>  // for equal_to<>
+#include <cmath>
 #include <memory>      // for alloc (which we don't use)
 #include <utility>     // for pair<>
 #include <sparsehash/internal/libc_allocator_with_realloc.h>
@@ -138,6 +139,8 @@ class sparse_hash_set {
   // Iterator functions -- recall all iterators are const
   iterator begin() const { return rep.begin(); }
   iterator end() const { return rep.end(); }
+  const_iterator cbegin() const { return rep.begin(); }
+  const_iterator cend() const { return rep.end(); }
 
   // These come from tr1's unordered_set. For us, a bucket has 0 or 1 elements.
   local_iterator begin(size_type i) const { return rep.begin(i); }
@@ -212,6 +215,10 @@ class sparse_hash_set {
 
   void resize(size_type hint) { rep.resize(hint); }
   void rehash(size_type hint) { resize(hint); }  // the tr1 name
+  void reserve( size_type count )
+  {
+      rehash(std::ceil(count / max_load_factor()));
+  }
 
   // Lookup routines
   iterator find(const key_type& key) const { return rep.find(key); }
